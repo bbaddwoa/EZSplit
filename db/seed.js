@@ -1,16 +1,8 @@
 import db from "#db/client";
-import { createUser } from "#db/queries/users";
 import { createMenu } from "#db/queries/menu";
-import { createCustomer } from "#db/queries/customer";
-import { createTableNumber } from "#db/queries/tableNumber";
-import { createMenuTable } from "#db/queries/menuTable";
-
-import {createMenuTable} from"./queries/menuTable.js";
-import { createMenu } from "./queries/menu.js";
-import {createTableNumber} from"./queries/tableNumber.js";
+import { createTable } from "./queries/tableNumber.js";
+import { createMenuTable } from "./queries/menuTable.js";
 import { createCustomer } from "./queries/customer.js";
-
-
 import { faker } from "@faker-js/faker";
 
 await db.connect();
@@ -82,16 +74,16 @@ async function seed() {
       console.error(error);
     }
   }
+
   for (let i = 0; i < 10; i++) {
-    await createTableNumber("Table " + i);
+    await createTable("Table " + i);
   }
   for (let i = 1; i <= 5; i++) {
     for (let j = 1; j <= 5; j++) {
       await createMenuTable(i, j);
     }
   }
-
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     const name = faker.person.firstName();
     const email = faker.internet.email();
     const phone_number = parseInt(faker.string.numeric(10)); // Generate 10-digit numeric phone number to fit in integer range

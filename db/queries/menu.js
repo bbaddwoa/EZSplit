@@ -28,8 +28,6 @@ export async function createMenu(items, prices) {
     ($1, $2)
   RETURNING *
   `;
-  const { rows } = await db.query(sql, [items, prices]);
-  return rows[0];
   const {
     rows: [menu],
   } = await db.query(sql, [items, prices]);
@@ -38,12 +36,11 @@ export async function createMenu(items, prices) {
 
 export async function getMenu() {
   const sql = `
-    SELECT id, items, prices, image_url
-    FROM menu
-    ORDER BY id
+  SELECT *
+  FROM menu
   `;
-  const { rows } = await db.query(sql);
-  return rows;
+  const { rows: menu } = await db.query(sql);
+  return menu;
 }
 export async function getMenuById(id) {
   const sql = `
@@ -52,18 +49,9 @@ export async function getMenuById(id) {
     WHERE id = $1
     LIMIT 1
   `;
-
   const {
     rows: [menu],
   } = await db.query(sql, [id]);
-  return menu || null;
-
-
-
-  const {
-    rows: [menu],
-  } = await db.query(sql, [id]);
-
   return menu || null;
 
 }

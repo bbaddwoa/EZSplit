@@ -8,10 +8,6 @@ import menuRouter from "#api/menu";
 import menuTableRouter from "#api/menuTable";
 import tableNumberRouter from "#api/tableNumber";
 import getUserFromToken from "#middleware/getUserFromToken";
-
-// import usersRouter from "#api/user";
-// import getUserFromToken from "#middleware/getUserFromToken";
-
 import handlePostgresErrors from "#middleware/handlePostgresErrors";
 import cors from "cors";
 import morgan from "morgan";
@@ -44,7 +40,11 @@ app.use("/table-number", tableNumberRouter);
 
 app.use("/tableNumber",tableNumberRouter );
 
-// app.use("/users", usersRouter);
+app.use("/users", usersRouter);
+app.use("/customer", customerRouter);
+app.use("/menu", menuRouter);
+app.use("/menuTable", menuTableRouter);
+app.use("/tableNumber", tableNumberRouter);
 
 
 app.use(handlePostgresErrors);

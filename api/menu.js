@@ -1,9 +1,8 @@
+import { getMenuById } from "#db/queries/menu";
+import { getMenu } from "#db/queries/menu";
 import express from "express";
-import { createMenu, getAllMenus, getMenuByTableId } from "#db/queries/menu";
-import requireBody from "#middleware/requireBody";
-import { createToken } from "#utils/jwt";
-
 const router = express.Router();
+export default router;
 
 // get all router & get by table id??
 
@@ -64,5 +63,3 @@ router.route("/:id").get(async (req, res) => {
     return res.status(500).json({ error: "Unable to fetch menu item" });
   }
 });
-
-export default router;

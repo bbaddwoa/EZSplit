@@ -4,17 +4,18 @@ import {
   getMenuTableById,
   getAllMenuTables,
 } from "#db/queries/menuTable";
+
 import requireBody from "#middleware/requireBody";
 import { createToken } from "#utils/jwt";
 
 const router = express.Router();
-
+export default router;
 
 // Get all menu-table entries
 router.get("/", async (req, res) => {
   try {
-    const menuTables = await getAllMenuTables();
-    res.status(200).json(menuTables);
+    const menuTable = await getAllMenuTables();
+    res.status(200).json(menuTable);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to retrieve menu tables" });
@@ -47,6 +48,3 @@ router.post("/", requireBody(["menu_id", "table_id"]), async (req, res) => {
     res.status(500).json({ error: "Failed to create menu table" });
   }
 });
-
-
-export default router;
