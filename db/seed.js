@@ -10,6 +10,10 @@ await seed();
 await db.end();
 console.log("🌱 Database seeded.");
 
+
+
+
+
 async function seed() {
   for (let i = 0; i < 15; i++) {
     const items = faker.food.dish();
