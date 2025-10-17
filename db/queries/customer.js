@@ -22,3 +22,13 @@ export async function getCustomers() {
   const { rows: customer } = await db.query(sql);
   return customer;
 }
+
+export async function getCustomerById(id) {
+  const sql = `
+  SELECT * 
+  FROM customer 
+  WHERE id = $1
+  `;
+  const { rows: customer } = await db.query(sql, [id]);
+  return customer;
+}
