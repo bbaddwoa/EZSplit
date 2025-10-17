@@ -3,7 +3,7 @@ import db from "#db/client";
 export async function createTable(table_num) {
   const sql = `
   INSERT INTO table_number
-    (table_num)
+    (number)
   VALUES
     ($1)
   RETURNING *
@@ -34,4 +34,5 @@ export async function getTableNumberById(id) {
     rows: [table_number],
   } = await db.query(sql, [id]);
   return table_number || null;
+
 }

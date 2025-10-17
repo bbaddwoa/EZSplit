@@ -24,3 +24,4 @@ router.param("id", async (req, res, next, id) => {
 router.route("/:id").get((req, res) => {
   res.send(req.table_number);
 });
+

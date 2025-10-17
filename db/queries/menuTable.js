@@ -1,7 +1,7 @@
 import db from "#db/client";
 import bcrypt from "bcrypt";
 
-export async function createMenuTable(menuId, tableId) {
+export async function createMenuTable(menu_id, table_id) {
   const sql = `
   INSERT INTO menu_table
     (menu_id, table_id)
@@ -32,3 +32,4 @@ export async function getMenuTableById(id) {
   const { rows: menuTable } = await db.query(sql, [id]);
   return menuTable;
 }
+

@@ -14,6 +14,7 @@ export async function createCustomer(name, email, phone_number) {
   return customer;
 }
 
+
 export async function getCustomers() {
   const sql = `
   SELECT *
@@ -32,3 +33,4 @@ export async function getCustomerById(id) {
   const { rows: customer } = await db.query(sql, [id]);
   return customer;
 }
+

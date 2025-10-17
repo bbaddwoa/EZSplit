@@ -7,6 +7,7 @@ import {
 
 import requireBody from "#middleware/requireBody";
 import { createToken } from "#utils/jwt";
+
 const router = express.Router();
 export default router;
 
@@ -20,7 +21,10 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve menu tables" });
   }
 });
+
 // get menu by id (No need for post)
+
+
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -31,6 +35,8 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve menu table by ID" });
   }
 });
+
+
 router.post("/", requireBody(["menu_id", "table_id"]), async (req, res) => {
   const { menu_id, table_id } = req.body;
   try {
