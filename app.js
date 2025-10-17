@@ -3,6 +3,10 @@ const app = express();
 export default app;
 
 import usersRouter from "#api/users";
+import customerRouter from "#api/customer";
+import menuRouter from "#api/menu";
+import menuTableRouter from "#api/menuTable";
+import tableNumberRouter from "#api/tableNumber";
 import getUserFromToken from "#middleware/getUserFromToken";
 import handlePostgresErrors from "#middleware/handlePostgresErrors";
 import cors from "cors";
@@ -15,11 +19,15 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(getUserFromToken);
+// app.use(getUserFromToken);
 
 app.get("/", (req, res) => res.send("Hello, World!"));
 
 app.use("/users", usersRouter);
+app.use("/customer", customerRouter);
+app.use("/menu", menuRouter);
+app.use("/menuTable", menuTableRouter);
+app.use("/tableNumber", tableNumberRouter);
 
 app.use(handlePostgresErrors);
 app.use((err, req, res, next) => {
